@@ -39,7 +39,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials-apurv']]){
                             dir('infra') {
                                 sh 'echo "=================Terraform Plan=================="'
-                                sh 'terraform plan'
+                                sh 'terraform plan -var "domain_name=jenkins.vebma.online."'
                             }
                         }
                     }
