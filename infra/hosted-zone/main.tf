@@ -1,17 +1,15 @@
-variable "domain_name" {
-  default = "vebma.online"
-}
+variable "domain_name" {}
 variable "aws_lb_dns_name" {}
 variable "aws_lb_zone_id" {}
 
-data "aws_route53_zone" "dev_proj_1_vebma_online" {
-  name         = var.domain_name
+data "aws_route53_zone" "dev_proj_1_vebma_org" {
+  name         = "vebma.online"
   private_zone = false
 }
 
 resource "aws_route53_record" "lb_record" {
-  zone_id = data.aws_route53_zone.dev_proj_1_vebma_online.zone_id
-  name    = "jenkins.${var.domain_name}"
+  zone_id = data.aws_route53_zone.dev_proj_1_vebma_org.zone_id
+  name    = var.domain_name
   type    = "A"
 
   alias {
@@ -22,5 +20,5 @@ resource "aws_route53_record" "lb_record" {
 }
 
 output "hosted_zone_id" {
-  value = data.aws_route53_zone.dev_proj_1_vebma_online.zone_id
+  value = data.aws_route53_zone.dev_proj_1_vebma_org.zone_id
 }
