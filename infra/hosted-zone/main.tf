@@ -11,7 +11,7 @@ output "zone_names_debug" {
 }
 
 data "aws_route53_zone" "dev_proj_1_vebma_online" {
-  name         = "${var.domain_name}."
+  name         = "jenkins.vebma.online."
   private_zone = false
 }
 
