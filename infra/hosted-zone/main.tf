@@ -1,11 +1,11 @@
 variable "domain_name" {
-default = "jenkins.vebma.online"
+default = "jenkins.vebma.online."
 }
 variable "aws_lb_dns_name" {}
 variable "aws_lb_zone_id" {}
 
 data "aws_route53_zone" "dev_proj_1_vebma_online" {
-  name         = "vebma.online."
+  name         = var.domain_name
   private_zone = false
 }
 
