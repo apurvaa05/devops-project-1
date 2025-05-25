@@ -25,7 +25,6 @@ pipeline {
                     steps {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials-apurv']]){
                             dir('infra') {
-                            sh 'terraform plan'
                             sh 'echo "=================Terraform Init=================="'
                                  sh '''
                     aws sts get-caller-identity
