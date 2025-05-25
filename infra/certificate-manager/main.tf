@@ -1,5 +1,7 @@
 variable "domain_name" {}
-variable "hosted_zone_id" {}
+variable "hosted_zone_id" {
+default = "Z04264632R52X7GQD1YVC"
+}
 
 output "dev_proj_1_acm_arn" {
   value = aws_acm_certificate.dev_proj_1_acm_arn.arn
