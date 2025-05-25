@@ -4,20 +4,14 @@ default = "jenkins.vebma.online"
 variable "aws_lb_dns_name" {}
 variable "aws_lb_zone_id" {}
 
-data "aws_route53_zones" "all" {}
-
-output "zone_names_debug" {
-  value = data.aws_route53_zones.all.names
-}
-
 data "aws_route53_zone" "dev_proj_1_vebma_online" {
-  name         = "jenkins.vebma.online."
+  name         = "vebma.online."
   private_zone = false
 }
 
 resource "aws_route53_record" "lb_record" {
   zone_id = "Z04264632R52X7GQD1YVC"
-  name    = var.domain_name
+  name    = ${var.domain_name}.
   type    = "A"
 
   alias {
