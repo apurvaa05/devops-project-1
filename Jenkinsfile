@@ -26,6 +26,10 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials-apurv']]){
                             dir('infra') {
                             sh 'echo "=================Terraform Init=================="'
+                                 sh '''
+                    aws sts get-caller-identity
+                    aws route53 list-hosted-zones
+                    '''
                             sh 'terraform init'
                         }
                     }
