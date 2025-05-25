@@ -11,7 +11,7 @@ data "aws_route53_zone" "dev_proj_1_vebma_online" {
 
 resource "aws_route53_record" "lb_record" {
   zone_id = "Z04264632R52X7GQD1YVC"
-  name    = ${var.domain_name}.
+  name    = "${var.domain_name}."
   type    = "A"
 
   alias {
