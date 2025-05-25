@@ -1,5 +1,5 @@
 variable "domain_name" {
-default = "jenkins.vebma.online."
+default = "jenkins.vebma.online"
 }
 variable "aws_lb_dns_name" {}
 variable "aws_lb_zone_id" {}
