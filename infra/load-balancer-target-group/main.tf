@@ -4,20 +4,20 @@ resource "aws_lb_target_group" "dev_proj_1_lb_target_group" {
   protocol = var.lb_target_group_protocol
   vpc_id   = var.vpc_id
   target_type = "instance"
-}
 
-output "dev_proj_1_lb_target_group_arn" {
-  value = aws_lb_target_group.dev_proj_1_lb_target_group.arn
-}
+  # Health check parameters (as arguments, not a block!)
+  health_check_enabled             = true
+  health_check_protocol            = "HTTP"
+  health_check_path                = "/"
+  health_check_interval            = 30
+  health_check_timeout             = 5
+  healthy_threshold                = 5
+  unhealthy_threshold              = 2
+  matcher                          = "200"
 
-  health_check {
-    path                = "/health"
-    port                = 5000
-    healthy_threshold   = 6
-    unhealthy_threshold = 2
-    timeout             = 2
-    interval            = 5
-    matcher             = "200"
+  stickiness {
+    type            = "lb_cookie"
+    enabled         = false
   }
 }
 
