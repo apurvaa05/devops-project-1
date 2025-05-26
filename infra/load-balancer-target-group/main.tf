@@ -6,6 +6,10 @@ resource "aws_lb_target_group" "dev_proj_1_lb_target_group" {
   target_type = "instance"
 }
 
+output "dev_proj_1_lb_target_group_arn" {
+  value = aws_lb_target_group.dev_proj_1_lb_target_group.arn
+}
+
   health_check {
     path                = "/health"
     port                = 5000
