@@ -1,8 +1,10 @@
 resource "aws_lb_target_group" "dev_proj_1_lb_target_group" {
-  name_prefix = var.lb_target_group_name
-  port        = var.lb_target_group_port
-  protocol    = var.lb_target_group_protocol
-  vpc_id      = var.vpc_id
+  name     = var.lb_target_group_name
+  port     = var.lb_target_group_port
+  protocol = var.lb_target_group_protocol
+  vpc_id   = var.vpc_id
+  target_type = "instance"
+}
 
   health_check {
     path                = "/health"
