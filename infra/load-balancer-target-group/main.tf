@@ -29,8 +29,3 @@ resource "aws_lb_target_group_attachment" "dev_proj_1_lb_target_group_attachment
   target_id        = var.ec2_instance_id
   port             = 5000
 }
-}
-
-output "dev_proj_1_lb_target_group_arn" {
-  value = aws_lb_target_group.dev_proj_1_lb_target_group.arn
-}
